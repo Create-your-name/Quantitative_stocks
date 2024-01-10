@@ -46,7 +46,7 @@ def extract_number(item):
         return None  # 如果没有匹配到数字部分，则返回None或者其他默认值
 def kxInfo(url, sheet,page_index):
     bond = queue.Queue()
-    with ThreadPoolExecutor(max_workers=30) as executor:  # 可根据需求调整最大工作线程数
+    with ThreadPoolExecutor(max_workers=1) as executor:  # 可根据需求调整最大工作线程数
         futures = [executor.submit(GetLi, url,bond,page) for page in range(1, page_index + 1)]
         # 等待所有任务完成
     for future in as_completed(futures):  # 等待所有任务完成
